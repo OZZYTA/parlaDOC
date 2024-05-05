@@ -107,7 +107,13 @@ class ElevenLabsSocket:
             finish_time = time.time()  # Record the time when the first byte is received
             time_total = int((finish_time - start_time) * 1000)
             print(f'LLM ({time_total}): {text_ia}')
+            
+            # Enviar el texto a la función de manejo de conversación
             await self.groq.conversation_handler(text_ia, 'assistant', False)
+            
+            # Imprimir el texto en la terminal
+            print("LLM Response:", text_ia)
+
             await websocket.send(json.dumps({"text": ""}))
 
             await listen_task

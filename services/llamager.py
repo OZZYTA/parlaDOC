@@ -26,7 +26,7 @@ class LLamager:
     def read_yaml_file():
         file_path = 'config.yaml'
         try:
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', encoding='utf-8') as file:  # Especifica la codificación como UTF-8
                 data = yaml.safe_load(file)
             return data
         except FileNotFoundError:
